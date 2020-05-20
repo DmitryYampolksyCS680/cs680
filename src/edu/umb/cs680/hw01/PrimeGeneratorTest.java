@@ -3,7 +3,7 @@ package edu.umb.cs680.hw01;
 /*what we test: - input type (should be positive numeric, fist<second)
                  - example range case
 */
-
+//test github
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
