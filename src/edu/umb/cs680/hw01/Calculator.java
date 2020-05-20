@@ -14,7 +14,7 @@ public class Calculator {
     }
 
     public static void main(String[] args){
-        edu.umb.cs680.hw02.Calculator calc = new edu.umb.cs680.hw02.Calculator();
+       Calculator calc = new Calculator();
         System.out.println( calc.multiply(2, 3) );
         System.out.println( calc.divide(10, 2) );
     }
