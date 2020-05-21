@@ -7,7 +7,7 @@
   on a shell. 
 -->
 
-<project name="calc" basedir="."  default="clean">
+<project name="calc" basedir="."  default="run">
 	<property environment="env"/>
 	<!--echo message="JUNIT: ${env.JUNIT}" /-->
 	<echo message="ANT_HOME: ${env.ANT_HOME}" />

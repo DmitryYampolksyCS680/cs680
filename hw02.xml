@@ -9,48 +9,63 @@
 
 <project name="calc" basedir="."  default="clean">
 	<property environment="env"/>
-	<!--echo message="JUNIT: ${env.JUNIT}" /-->
-	<property name="env.ANT_HOME" value="C:\apache-ant-1.9.14"/>
+	<property name="env.ANT_HOME" value="C:\ant"/>
+	<property name="env.JUNIT" value="C:\Users\Dmitry\.m2\repository"/>
 	<echo message="ANT_HOME: ${env.ANT_HOME}" />
-	
+	<echo message="JUNIT: ${env.JUNIT}" />
+
+
+
 	<property name="src" location="src" />
 	<property name="bin" location="bin" />
-	<!-- property name="test.src" location="test/src" /-->
-	<!-- property name="test.bin" location="test/bin" /-->
-	<!-- property name="test.reports" location="test/reports" /-->
-	
+	<property name="test.src" location="test/src" />
+	<property name="test.bin" location="test/bin" />
+	<property name="test.reports" location="test/reports" />
+
 	<path id="classpath">
 		<pathelement location="bin" />
-		<!-- pathelement location="test/bin" /-->
-		<!-- fileset dir="${env.JUNIT}" includes="org.junit*.jar" excludes="org.junit.vintage.*.jar" /-->
-		<!-- fileset dir="${env.JUNIT}" includes="org.opentest4j*.jar" /-->
-		<!-- fileset dir="${env.JUNIT}" includes="org.apiguardian*.jar" /-->
+		<pathelement location="test/bin" />
+		<fileset dir="${env.JUNIT}/org/junit/jupiter/junit-jupiter-api/" includes="**/junit-jupiter-api-5.4.2.jar"/>
+		<fileset dir="${env.JUNIT}/" includes="**/junit-jupiter-engine-5.4.2.jar"/>
+		<fileset dir="${env.JUNIT}/" includes="**/junit-jupiter-params-5.4.2.jar"/>
+		<fileset dir="${env.JUNIT}/" includes="**/junit-platform-commons-1.4.2.jar"/>
+		<fileset dir="${env.JUNIT}/" includes="**/junit-platform-engine-1.4.2.jar"/>
+		<fileset dir="${env.JUNIT}/" includes="**/junit-platform-launcher-1.4.2.jar"/>
+		<fileset dir="${env.JUNIT}/" includes="**/testng-6.14.3.jar"/>
+		<fileset dir="${env.JUNIT}/" includes="**/apiguardian-api-1.0.0.jar"/>
 	</path>
 	<echo message="${toString:classpath}" />
-	
+
 	<target name="init">
 		<mkdir dir="${bin}"/>
-		<!--mkdir dir="${test.bin}"/-->
-		<!--mkdir dir="${test.reports}"/-->
+		<mkdir dir="${test.bin}"/>
+		<mkdir dir="${test.reports}"/>
 	</target>
 	
 	<target name="compile" depends="init">
 		<javac srcdir="${src}" destdir="${bin}" includeAntRuntime="no">
 			<classpath refid="classpath"/>
-			<include name="edu/umb/cs680/junit5intro/Calculator.java"/>
+			<include name="edu/umb/cs680/hw02/Calculator.java"/>
 		</javac>
 	</target>
 
-	<target name="run" depends="compile">
-		<java classname="edu.umb.cs680.junit5intro.Calculator"
+	<target name="compile-test" depends="compile">
+		<javac srcdir="${test.src}" destdir="${test.bin}" includeAntRuntime="no">
+			<classpath refid="classpath"/>
+			<include name="edu/umb/cs680/hw02/CalculatorTest.java"/>
+		</javac>
+	</target>
+
+	<target name="run" depends="compile-test">
+		<java classname="edu.umb.cs680.hw02.Calculator"
 				classpathref="classpath"  
 				fork="true"/>
 	</target>
 	
 	<target name="clean" depends="run">
 		<delete includeemptydirs="true">
-			<fileset dir="${bin}/edu/umb/cs680/junit5intro" includes="**/*"/>
-			<!-- fileset dir="${test.bin}/edu/umb/cs680/junit5intro" includes="**/*" /-->
+			<fileset dir="${test.bin}/edu/umb/cs680/hw02" includes="**/*"/>
+			<fileset dir="${bin}/edu/umb/cs680/hw02" includes="**/*"/>
 		</delete>
 	</target>
 
