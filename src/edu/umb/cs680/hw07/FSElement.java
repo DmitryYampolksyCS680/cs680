@@ -2,6 +2,7 @@ package edu.umb.cs680.hw07;
 
 import java.time.LocalDateTime;
 import java.util.LinkedList;
+import java.util.Objects;
 
 public abstract class FSElement {
 
@@ -20,6 +21,12 @@ public abstract class FSElement {
 
     FSElement(Directory parent, String name, int size, LocalDateTime creationTime)
     {
+
+        if(parent!=null)
+            if(!parent.isDirectory())
+            throw new IllegalArgumentException("FSElement parent should be a Directory.\n");
+
+
         this.parent=parent;
         this.creationTime=creationTime;
         this.name=name;
@@ -33,10 +40,7 @@ public abstract class FSElement {
     public Directory getParent()
     {
 
-        if (this.parent==null)
-            return (Directory) this;
-        else
-            return this.parent;
+        return Objects.requireNonNullElseGet(this.parent, () -> (Directory) this);
 
     }
 
@@ -128,13 +132,13 @@ class Directory extends FSElement
 
     }
 
-    public LinkedList<File> getFiles()
+    public LinkedList<FSElement> getFiles()
     {
-        LinkedList<File> Files = new LinkedList<>();
+        LinkedList<FSElement> Files = new LinkedList<>();
 
         for (FSElement fsElement: this.getChildren()) {
             if(!fsElement.isDirectory())
-                Files.add((File) fsElement);
+                Files.add(fsElement);
 
         }
 
@@ -146,7 +150,7 @@ class Directory extends FSElement
     {
         int totalSize=0;
 
-        for( File fsElement: this.getFiles() )
+        for( FSElement fsElement: this.getFiles() )
         {
             totalSize= totalSize+fsElement.getSize();
         }
