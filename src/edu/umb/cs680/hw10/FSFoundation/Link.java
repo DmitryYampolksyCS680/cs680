@@ -3,7 +3,7 @@ package edu.umb.cs680.hw10.FSFoundation;
 
 import java.time.LocalDateTime;
 
-public abstract class Link extends FSElement {
+public class Link extends FSElement {
 
    public Link(Directory parent, String name, int size, LocalDateTime creationTime, FSElement target)
    {
@@ -18,7 +18,7 @@ public FSElement getTarget()
 {return target;}
 
 
-
+    //public void accept(FSVisitor v){v.visit(this);}
 
    @Override
    public boolean isDirectory() {

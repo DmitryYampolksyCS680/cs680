@@ -14,7 +14,6 @@ public  class Directory extends FSElement
     {
         super(parent,name,size,creationTime);
 
-        children = new LinkedList<FSElement>();
 
 
     }
@@ -24,9 +23,17 @@ public  class Directory extends FSElement
         return true;
     }
 
+//    public void accept(FSVisitor v){
+//        v.visit(this);
+//
+//        for(FSElement e:children){
+//
+//            e.accept(v);
+//        }
+//    }
 
 
-    private LinkedList<FSElement>  children;
+    protected LinkedList<FSElement>  children = null;
 
     private static FileSystem fileSystem;
 
@@ -41,10 +48,16 @@ public  class Directory extends FSElement
 
     public void appendChild(FSElement child)
     {
+        if(this.children ==null)
+            this.children = new LinkedList<FSElement>();
+
         this.children.add(child);
         child.setParent(this);
         this.nchildren++;
     }
+
+
+
 
     public int countChildren()
     {

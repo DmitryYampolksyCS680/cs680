@@ -16,16 +16,22 @@ public abstract class FSElement {
 
 
 
+    public FSElement( String name, int size, LocalDateTime creationTime)
+    {
 
+        this.creationTime=creationTime;
+        this.name=name;
+        this.size=size;
+
+
+    }
 
 
     public FSElement(Directory parent, String name, int size, LocalDateTime creationTime)
     {
-
         if(parent!=null)
             if(!parent.isDirectory())
             throw new IllegalArgumentException("FSElement parent should be a Directory.\n");
-
 
         this.parent=parent;
         this.creationTime=creationTime;
@@ -36,6 +42,9 @@ public abstract class FSElement {
             parent.appendChild(this);
 
     }
+
+
+
 
     public Directory getParent()
     {
@@ -60,6 +69,8 @@ public abstract class FSElement {
     }
 
     public abstract boolean isDirectory();
+
+    //public abstract void accept(FSVisitor v);
 
 
     public boolean isFile(){

@@ -13,9 +13,6 @@ public  class Directory extends FSElement
     {
         super(parent,name,size,creationTime);
 
-        children = new LinkedList<FSElement>();
-
-
     }
 
     @Override

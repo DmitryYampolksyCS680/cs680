@@ -9,9 +9,9 @@ public abstract class FSElement {
 
 
     private  Directory parent;
-    private String name;
-    private int size;
-    private LocalDateTime creationTime;
+    protected String name;
+    protected int size;
+    protected LocalDateTime creationTime;
 
 
 
@@ -34,6 +34,9 @@ public abstract class FSElement {
         if (parent != null)
             parent.appendChild(this);
 
+    }
+
+    protected FSElement() {
     }
 
     public Directory getParent()

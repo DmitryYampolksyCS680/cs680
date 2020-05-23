@@ -1,13 +1,9 @@
 package edu.umb.cs680.hw10.APFS;
 
-import edu.umb.cs680.hw09.APFS.ApfsElement;
-import edu.umb.cs680.hw09.FSFoundation.Directory;
-import edu.umb.cs680.hw09.FSFoundation.FSElement;
-import edu.umb.cs680.hw09.FSFoundation.FileSystem;
-
+import edu.umb.cs680.hw10.FSFoundation.*;
 import java.time.LocalDateTime;
 
-public abstract class APFS extends FSElement {
+public abstract class APFS extends FileSystem {
 
 
   private String ownersName="";
@@ -15,8 +11,8 @@ public abstract class APFS extends FSElement {
 
   LocalDateTime lastModified = null;//to be set in modify action
 
-  public APFS(ApfsElement.ApfsDirectory parent, String name, int size, LocalDateTime creationTime) {
-    super(parent,name,size,creationTime);
+  public APFS(Directory parent, String name, int size, LocalDateTime creationTime) {
+    super();
 
     this.lastModified = creationTime;
   }
