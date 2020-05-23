@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ApfsDirectoryTest {
 
 @Test
-    public static void main(String[] args) {
+    public  void mainTest() {
 
 
 

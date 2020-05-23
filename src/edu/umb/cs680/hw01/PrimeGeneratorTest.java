@@ -58,13 +58,13 @@ class PrimeGeneratorTest {
             for (Long prime : primes) {
                 System.out.print(prime + ", ");
             }
-
+            //  fail("Incorrect numbers generated");
  assertArrayEquals( expectedPrimes, gen.getPrimes().toArray() );
 
         }
              catch(IllegalArgumentException ex) {
             System.out.print(ex.getMessage());
-                 //  fail("Incorrect numbers generated");
+
         }
     }
 
