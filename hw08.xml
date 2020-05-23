@@ -55,30 +55,30 @@
     <target name="compile" depends="init">
         <javac srcdir="${src}" destdir="${bin}" includeAntRuntime="no">
             <classpath refid="classpath"/>
-            <include name="edu/umb/cs680/hw08/Calculator.java"/>
+            <include name="edu/umb/cs680/hw08/Link.java"/>
         </javac>
     </target>
 
     <target name="compile-test" depends="compile">
         <javac srcdir="${test.src}" destdir="${test.bin}" includeAntRuntime="no">
             <classpath refid="classpath"/>
-            <include name="edu/umb/cs680/hw08/CalculatorTest.java"/>
+            <include name="edu/umb/cs680/hw08/LinkTest.java"/>
         </javac>
     </target>
 
 
 
     <target name="run" depends="compile-test">
-        <java classname="edu.umb.cs680.hw08.Calculator"
+        <java classname="edu.umb.cs680.hw08.Link"
               classpathref="classpath"
               fork="true"/>
     </target>
 
 
     <target name="test" depends="run">
-        <junitlauncher>
+        <junitlauncher printsummary="true">
             <classpath refid="classpath"/>
-            <test name="edu.umb.cs680.hw08.CalculatorTest"/>
+            <test name="edu.umb.cs680.hw08.LinkTest"/>
         </junitlauncher>
     </target>
 
@@ -88,7 +88,7 @@
 
     <target name="clean" depends="test">
         <delete includeemptydirs="true">
-            <!--fileset dir="${test.bin}/edu/umb/cs680/hw08" includes="**/*"/-->
+            <fileset dir="${test.bin}/edu/umb/cs680/hw08" includes="**/*">
             <fileset dir="${bin}/edu/umb/cs680/hw08" includes="**/*"/>
         </delete>
     </target>

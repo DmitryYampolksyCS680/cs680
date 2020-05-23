@@ -79,6 +79,7 @@
         <junitlauncher  printSummary="true">
             <classpath refid="classpath"/>
             <test outputdir="reports" name="edu.umb.cs680.hw05.CarTest"/>
+            <listener type="legacy-brief" sendSysOut="true"/>
         </junitlauncher>
     </target>
 

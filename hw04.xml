@@ -80,7 +80,7 @@
             <classpath refid="classpath"/>
             <test name="edu.umb.cs680.hw04.PrimeGeneratorTest">
             <listener type="legacy-brief" sendSysOut="true"/>
-            <listener type="legacy-xml" sendSysErr="true" sendSysOut="true"/>
+<!--            <listener type="legacy-xml" sendSysErr="true" sendSysOut="true"/>-->
             </test>
         </junitlauncher>
     </target>

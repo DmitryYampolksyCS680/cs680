@@ -55,30 +55,34 @@
     <target name="compile" depends="init">
         <javac srcdir="${src}" destdir="${bin}" includeAntRuntime="no">
             <classpath refid="classpath"/>
-            <include name="edu/umb/cs680/hw07/Calculator.java"/>
+            <include name="edu/umb/cs680/hw07/FSElementTest.java"/>
+            <include name="edu/umb/cs680/hw07/DirectoryTest.java"/>
         </javac>
     </target>
 
     <target name="compile-test" depends="compile">
         <javac srcdir="${test.src}" destdir="${test.bin}" includeAntRuntime="no">
             <classpath refid="classpath"/>
-            <include name="edu/umb/cs680/hw07/CalculatorTest.java"/>
+            <include name="edu/umb/cs680/hw07/FSElementTest.java"/>
+            <include name="edu/umb/cs680/hw07/DirectoryTest.java"/>
         </javac>
     </target>
 
 
 
-    <target name="run" depends="compile-test">
-        <java classname="edu.umb.cs680.hw07.Calculator"
-              classpathref="classpath"
-              fork="true"/>
-    </target>
+<!--    <target name="run" depends="compile-test">-->
+<!--        <java classname="edu.umb.cs680.hw07.Calculator"-->
+<!--              classpathref="classpath"-->
+<!--              fork="true"/>-->
+<!--    </target>-->
 
 
-    <target name="test" depends="run">
-        <junitlauncher>
+    <target name="test" depends="compile-test">
+        <junitlauncher printsummary="true">
             <classpath refid="classpath"/>
-            <test name="edu.umb.cs680.hw07.CalculatorTest"/>
+            <test name="edu.umb.cs680.hw07.FSElementTest"/>
+            <test name="edu.umb.cs680.hw07.DirectoryTest"/>
+            <listener type="legacy-plain" sendSysOut="true" sendSysErr="true"/>
         </junitlauncher>
     </target>
 
@@ -88,7 +92,7 @@
 
     <target name="clean" depends="test">
         <delete includeemptydirs="true">
-            <!--fileset dir="${test.bin}/edu/umb/cs680/hw07" includes="**/*"/-->
+            <fileset dir="${test.bin}/edu/umb/cs680/hw07" includes="**/*"/>
             <fileset dir="${bin}/edu/umb/cs680/hw07" includes="**/*"/>
         </delete>
     </target>

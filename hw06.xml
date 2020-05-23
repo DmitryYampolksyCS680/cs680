@@ -55,30 +55,31 @@
     <target name="compile" depends="init">
         <javac srcdir="${src}" destdir="${bin}" includeAntRuntime="no">
             <classpath refid="classpath"/>
-            <include name="edu/umb/cs680/hw06/Calculator.java"/>
+            <include name="edu/umb/cs680/hw06/DVDPlayer.java"/>
         </javac>
     </target>
 
     <target name="compile-test" depends="compile">
         <javac srcdir="${test.src}" destdir="${test.bin}" includeAntRuntime="no">
             <classpath refid="classpath"/>
-            <include name="edu/umb/cs680/hw06/CalculatorTest.java"/>
+            <include name="edu/umb/cs680/hw06/DVDPlayerTest.java"/>
         </javac>
     </target>
 
 
 
-    <target name="run" depends="compile-test">
-        <java classname="edu.umb.cs680.hw06.Calculator"
-              classpathref="classpath"
-              fork="true"/>
-    </target>
+<!--    <target name="run" depends="compile-test">-->
+<!--        <java classname="edu.umb.cs680.hw06.DVDPlayer"-->
+<!--              classpathref="classpath"-->
+<!--              fork="true"/>-->
+<!--    </target>-->
 
 
-    <target name="test" depends="run">
-        <junitlauncher>
+    <target name="test" depends="compile-test">
+        <junitlauncher printsummary="true">
             <classpath refid="classpath"/>
-            <test name="edu.umb.cs680.hw06.CalculatorTest"/>
+            <test name="edu.umb.cs680.hw06.DVDPlayerTest"/>
+            <listener type="legacy-brief" sendSysOut="true"/>
         </junitlauncher>
     </target>
 

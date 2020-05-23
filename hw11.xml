@@ -76,7 +76,7 @@
 
 
     <target name="test" depends="run">
-        <junitlauncher>
+        <junitlauncher printsummary="true">
             <classpath refid="classpath"/>
             <test name="edu.umb.cs680.hw11.CalculatorTest"/>
         </junitlauncher>

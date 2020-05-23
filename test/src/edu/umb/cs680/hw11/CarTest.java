@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class CarTest {
 
 @Test
-    public static void main(String[] args) {
+    public  void mainTest() {
 
 
 

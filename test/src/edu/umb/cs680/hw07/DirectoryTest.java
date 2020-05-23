@@ -71,7 +71,7 @@ public class DirectoryTest {
     void getTotalSize() {
     }
 
-    public static void main(String[] args) {
+    public  void mainTest() {
 
 
         Directory root = new Directory(null, "root",0, LocalDateTime.now());

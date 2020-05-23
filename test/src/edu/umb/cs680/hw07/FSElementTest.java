@@ -33,7 +33,7 @@ class FSElementTest {
     }
 
 @Test
-    public static void main(String[] args) {
+    public static void mainTest() {
 
 
         Directory root = new Directory(null, "root",0, LocalDateTime.now());

@@ -1,4 +1,4 @@
-package edu.umb.cs680.hw01;
+package edu.umb.cs680.hw04;
 
 /*what we test: - input type (should be positive numeric, fist<second)
                  - example range case

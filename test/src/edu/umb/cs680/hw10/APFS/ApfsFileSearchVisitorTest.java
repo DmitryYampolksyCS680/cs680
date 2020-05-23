@@ -12,7 +12,7 @@ class ApfsFileSearchVisitorTest {
 
 
     @Test
-    public static void main(String[] args) {
+    public void mainTest() {
 
 
         ApfsDirectory root = new ApfsDirectory(null, "root",0, LocalDateTime.now());

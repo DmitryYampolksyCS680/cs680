@@ -7,11 +7,12 @@ public class DVDPlayer {
     private DVDPlayer()
     {
         state = new DrawerClosedNotPlaying();
+        stateName="closed";
     }
 
     private static DVDPlayer player=null;
 
-     public DVDPlayer getInstance()
+     public static DVDPlayer getInstance()
     {
         if(player==null) {
             player = new DVDPlayer();
@@ -20,7 +21,9 @@ public class DVDPlayer {
     }
 
     State state;
+    String stateName ;
 
+    public String getStateName(){ return stateName;}
 
     void changeState(State state_in) {
         this.state = state_in;
@@ -41,14 +44,15 @@ public class DVDPlayer {
 
 
     //placeholders?
-    void open(){}
-    void close(){}
-    void play(){}
-    void stop(){}
+    void open(){stateName="open";}
+    void close(){stateName="closed";}
+    void play(){stateName="playing";}
+    void stop(){stateName="closed";}
 
 
     interface State
     {
+
         void openCloseButtonPushed();
         void playButtonPushed();
         void stopButtonPushed();

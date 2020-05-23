@@ -64,10 +64,8 @@ class MulticastTest {
         stockObservable.changeQuote(stockEventString, stockEventQuote);
 
         fail("Observable changeQuote operation fail.");
-    } catch (Exception exception){
-            System.out.print(exception.getMessage());
-
-
+    } catch (Exception exception) {
+        System.out.print(exception.getMessage());
     }
 
     }
