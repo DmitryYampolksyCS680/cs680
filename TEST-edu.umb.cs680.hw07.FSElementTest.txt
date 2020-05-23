@@ -1,8 +1,0 @@
-Testcase: edu.umb.cs680.hw07.FSElementTest
-Test: getCreationTime() took 7 milli sec(s)
-Test: getName() took 0 milli sec(s)
-Test: getSize() took 0 milli sec(s)
-Test: isDirectory() took 0 milli sec(s)
-Test: setParent() took 0 milli sec(s)
-Test: getParent() took 0 milli sec(s)
-Tests run: 6, Failures: 0, Skipped: 0, Aborted: 0, Time elapsed: 17 milli sec(s)

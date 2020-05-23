@@ -55,7 +55,7 @@
     <target name="compile" depends="init">
         <javac srcdir="${src}" destdir="${bin}" includeAntRuntime="no">
             <classpath refid="classpath"/>
-            <include name="edu/umb/cs680/hw08/Link.java"/>
+            <include name="edu/umb/cs680/hw08/FSElement.java"/>
         </javac>
     </target>
 
@@ -69,7 +69,7 @@
 
 
     <target name="run" depends="compile-test">
-        <java classname="edu.umb.cs680.hw08.Link"
+        <java classname="edu.umb.cs680.hw08.FSElement"
               classpathref="classpath"
               fork="true"/>
     </target>
@@ -88,7 +88,7 @@
 
     <target name="clean" depends="test">
         <delete includeemptydirs="true">
-            <fileset dir="${test.bin}/edu/umb/cs680/hw08" includes="**/*">
+            <fileset dir="${test.bin}/edu/umb/cs680/hw08" includes="**/*"/>
             <fileset dir="${bin}/edu/umb/cs680/hw08" includes="**/*"/>
         </delete>
     </target>

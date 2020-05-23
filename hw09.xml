@@ -24,11 +24,6 @@
 
 
 
-    <path id="classpath2">
-        <pathelement location="test/bin" />
-    </path>
-
-
     <path id="classpath">
         <pathelement location="bin" />
         <pathelement location="test/bin" />
@@ -55,30 +50,31 @@
     <target name="compile" depends="init">
         <javac srcdir="${src}" destdir="${bin}" includeAntRuntime="no">
             <classpath refid="classpath"/>
-            <include name="edu/umb/cs680/hw09/Calculator.java"/>
+            <include name="edu/umb/cs680/hw09/APFS/*.java"/>
+            <include name="edu/umb/cs680/hw09/FSFoundation/*.java"/>
         </javac>
     </target>
 
     <target name="compile-test" depends="compile">
         <javac srcdir="${test.src}" destdir="${test.bin}" includeAntRuntime="no">
             <classpath refid="classpath"/>
-            <include name="edu/umb/cs680/hw09/CalculatorTest.java"/>
+            <include name="edu/umb/cs680/hw09/APFSTest.java"/>
         </javac>
     </target>
 
 
 
-    <target name="run" depends="compile-test">
-        <java classname="edu.umb.cs680.hw09.Calculator"
-              classpathref="classpath"
-              fork="true"/>
-    </target>
+<!--    <target name="run" depends="compile-test">-->
+<!--        <java classname="edu.umb.cs680.hw09.Calculator"-->
+<!--              classpathref="classpath"-->
+<!--              fork="true"/>-->
+<!--    </target>-->
 
 
-    <target name="test" depends="run">
+    <target name="test" depends="compile-test">
         <junitlauncher printsummary="true">
             <classpath refid="classpath"/>
-            <test name="edu.umb.cs680.hw09.CalculatorTest"/>
+            <test name="edu.umb.cs680.hw09.APFSTest"/>
         </junitlauncher>
     </target>
 
@@ -88,8 +84,8 @@
 
     <target name="clean" depends="test">
         <delete includeemptydirs="true">
-            <!--fileset dir="${test.bin}/edu/umb/cs680/hw09" includes="**/*"/-->
-            <fileset dir="${bin}/edu/umb/cs680/hw09" includes="**/*"/>
+            <fileset dir="${bin}/edu/umb/cs680/hw09/APFS" includes="**/*"/>
+            <fileset dir="${test.bin}/edu/umb/cs680/hw09/APFS" includes="**/*"/>
         </delete>
     </target>
 

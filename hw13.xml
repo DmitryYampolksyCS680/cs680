@@ -7,7 +7,7 @@
   on a shell.
 -->
 
-<project name="hw11" basedir="."  default="clean">
+<project name="hw13" basedir="."  default="clean">
     <property environment="env"/>
     <property name="env.ANT_HOME" value="ANT_HOME"/>
     <property name="env.JUNIT" value="JUNIT"/>
@@ -55,21 +55,21 @@
     <target name="compile" depends="init">
         <javac srcdir="${src}" destdir="${bin}" includeAntRuntime="no">
             <classpath refid="classpath"/>
-            <include name="edu/umb/cs680/hw11/Car.java"/>
+            <include name="edu/umb/cs680/hw13/*.java"/>
         </javac>
     </target>
 
     <target name="compile-test" depends="compile">
         <javac srcdir="${test.src}" destdir="${test.bin}" includeAntRuntime="no">
             <classpath refid="classpath"/>
-            <include name="edu/umb/cs680/hw11/CarTest.java"/>
+            <include name="edu/umb/cs680/hw13/MulticastTest.java"/>
         </javac>
     </target>
 
 
 
 <!--    <target name="run" depends="compile-test">-->
-<!--        <java classname="edu.umb.cs680.hw11.Calculator"-->
+<!--        <java classname="edu.umb.cs680.hw13.Calculator"-->
 <!--              classpathref="classpath"-->
 <!--              fork="true"/>-->
 <!--    </target>-->
@@ -78,7 +78,7 @@
     <target name="test" depends="compile-test">
         <junitlauncher printsummary="true">
             <classpath refid="classpath"/>
-            <test name="edu.umb.cs680.hw11.CarTest"/>
+            <test name="edu.umb.cs680.hw13.ApfsDirectoryTest"/>
         </junitlauncher>
     </target>
 
@@ -88,8 +88,8 @@
 
     <target name="clean" depends="test">
         <delete includeemptydirs="true">
-            <!--fileset dir="${test.bin}/edu/umb/cs680/hw11" includes="**/*"/-->
-            <fileset dir="${bin}/edu/umb/cs680/hw11" includes="**/*"/>
+            <fileset dir="${test.bin}/edu/umb/cs680/hw13" includes="**/*"/>
+            <fileset dir="${bin}/edu/umb/cs680/hw13" includes="**/*"/>
         </delete>
     </target>
 

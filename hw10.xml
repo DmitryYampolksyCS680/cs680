@@ -55,30 +55,31 @@
     <target name="compile" depends="init">
         <javac srcdir="${src}" destdir="${bin}" includeAntRuntime="no">
             <classpath refid="classpath"/>
-            <include name="edu/umb/cs680/hw10/Calculator.java"/>
+            <include name="edu/umb/cs680/hw10/APFS/*.java"/>
+            <include name="edu/umb/cs680/hw10/FSFoundation/*.java"/>
         </javac>
     </target>
 
     <target name="compile-test" depends="compile">
         <javac srcdir="${test.src}" destdir="${test.bin}" includeAntRuntime="no">
             <classpath refid="classpath"/>
-            <include name="edu/umb/cs680/hw10/CalculatorTest.java"/>
+            <include name="edu/umb/cs680/hw10/ApfsFileSearchVisitorTest.java"/>
         </javac>
     </target>
 
 
 
-    <target name="run" depends="compile-test">
-        <java classname="edu.umb.cs680.hw10.Calculator"
-              classpathref="classpath"
-              fork="true"/>
-    </target>
+<!--    <target name="run" depends="compile-test">-->
+<!--        <java classname="edu.umb.cs680.hw10.Calculator"-->
+<!--              classpathref="classpath"-->
+<!--              fork="true"/>-->
+<!--    </target>-->
 
 
-    <target name="test" depends="run">
+    <target name="test" depends="compile-test">
         <junitlauncher printsummary="true">
             <classpath refid="classpath"/>
-            <test name="edu.umb.cs680.hw10.CalculatorTest"/>
+            <test name="edu.umb.cs680.hw10.ApfsFileSearchVisitorTest"/>
         </junitlauncher>
     </target>
 
